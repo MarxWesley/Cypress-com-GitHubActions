@@ -1,13 +1,43 @@
-name: e2e-tests
-on: [push]
+name: Cypress Tests
+
+# 1. Quando o workflow será executado
+on:
+  push:           # Quando houver um push
+    branches:
+      - main      # Apenas na branch "main"
+  pull_request:   # Também será executado em pull requests
+
+# 2. Jobs que serão executados
 jobs:
-    cypress-run:
-        runs-on: ubuntu-latest
-        steps: 
-            - name: Checkout
-              uses: actions/checkout@v4
-            - name: cypress run
-              uses: cypress-io/github-action@v6
-              with:
-                start: npm start
-                spec: cypress/e2e/LoginTest.cy.js
+  cypress-run:    # Nome do job (pode ser qualquer nome)
+    runs-on: ubuntu-latest  # O job será executado em uma máquina virtual com Ubuntu
+
+    # 3. Definir os steps para rodar o Cypress
+    steps:
+      - name: Checkout do código     # Fazer checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Instalar Node.js       # Instalar o Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'         # Usar a versão 18 do Node.js
+
+      - name: Instalar dependências  # Instalar dependências via npm
+        run: npm install             # Comando para instalar dependências do Cypress e outras do projeto
+
+      - name: Rodar testes Cypress   # Executar testes Cypress
+        run: npx cypress run         # Comando Cypress para rodar os testes
+
+      - name: Upload screenshots e vídeos   # Fazer upload de artefatos (como screenshots e vídeos)
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-artifacts          # Nome do artefato
+          path: cypress/screenshots/**     # Path dos screenshots capturados
+        continue-on-error: true            # Não interromper o workflow caso não haja screenshots ou vídeos
+
+      - name: Upload dos resultados de testes
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-results        # Nome dos resultados
+          path: cypress/videos/**      # Path dos vídeos dos testes
+
