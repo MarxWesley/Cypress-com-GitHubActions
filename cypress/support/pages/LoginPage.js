@@ -23,7 +23,7 @@ const msgEmailOuSenhaIncorreta = "#modalText"
         cy.preencherCampo(passwordField, dados.password)
         cy.clicar(btnAcessar)
         cy.validarTexto(labelTextName, `Olá ${dados.name},`)
-        cy.validarTexto(labelBemVindo, 'bem vindo a BugBank :)')
+        cy.validarTexto(labelBemVindo, 'bem vindo ao BugBank :)')
     }) 
 
     Cypress.Commands.add('generateFakerLogin', () => {
