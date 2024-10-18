@@ -10,6 +10,38 @@ O projeto propõe o desenvolvimento de teste automatizados com cypress utilizand
 - VSCode: É um editor de código-fonte leve e multiplataforma, com suporte para várias linguagens, extensões e ferramentas de desenvolvimento integradas.
 
 ## ⚙️ Configurações necessárias para rodar o projeto
+### 1. Inicializar o Projeto Node.js
+```
+npm init -y
+```
+Este comando inicializa um projeto Node.js com um arquivo package.json padrão, usando as configurações padrão para o seu projeto. É necessário para instalar dependências como o Cypress e gerenciar as bibliotecas do projeto.
+```
+npm install cypress
+```
+Este comando instala o Cypress como uma dependência do seu projeto. O Cypress é uma ferramenta de automação de testes end-to-end para testar aplicações web.
+```
+npx cypress open
+```
+Este comando abre a interface gráfica do Cypress (Test Runner), onde você pode ver, executar e depurar seus testes. Ele também cria uma estrutura de diretórios padrão com exemplos de testes, se for a primeira execução.
+### 2. Instalar dependência do Data Faker
+````
+npm install @faker-js/faker --save-dev
+````
+### 3. Instalar dependências do Allure Report
+```
+npm install --save-dev allure-cypress
+```
+- Para gerar os relatórios rode o Cypress normalmente
+```
+npx cypress run
+```
+### 4. Visualizar o relatório do Allure na web 
+```
+allure serve
+````
+
+
+
 
 ## 💻 Tecnologias utilizadas
 - [Git](https://git-scm.com)
