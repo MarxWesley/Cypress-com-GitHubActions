@@ -1,6 +1,5 @@
 # 🚀 Projeto Automação E2E com Cypress no site BugBank 
-O Projeto a seguir tem como objetivo principal desenvolver um site para fins educacionais para aprender CSS e HTML. 
-
+O Projeto a seguir tem como objetivo principal desenvolver testes web para o site [BugBank](https://bugbank.netlify.app), um site voltado para testes. Utilizando a ferramenta Cypress
 ## 👤 Integrantes
 - Wesley Bertin Marques ([Linkedin](https://www.linkedin.com/in/wesley-bertin-marques-a7b2b4230/))
 
